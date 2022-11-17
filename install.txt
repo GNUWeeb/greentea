@@ -1,0 +1,5 @@
+
+# For submodules/tdlib/td
+sudo apt-get install -y \
+make git zlib1g-dev libssl-dev gperf \
+php-cli cmake clang libc++-dev libc++abi-dev;
