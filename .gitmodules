@@ -1,0 +1,9 @@
+[submodule "submodules/tdlib/td"]
+	path = submodules/tdlib/td
+	url = https://github.com/tdlib/td.git
+[submodule "submodules/ammarfaizi2/cppmysql"]
+	path = submodules/ammarfaizi2/cppmysql
+	url = https://github.com/ammarfaizi2/cppmysql.git
+[submodule "submodules/ammarfaizi2/workqueue2"]
+	path = submodules/ammarfaizi2/workqueue2
+	url = https://github.com/ammarfaizi2/workqueue2.git
