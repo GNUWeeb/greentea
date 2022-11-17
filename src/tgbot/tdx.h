@@ -14,6 +14,7 @@
 #include <condition_variable>
 
 namespace td_api = td::td_api;
+using Object = td_api::object_ptr<td_api::Object>;
 
 namespace tgbot {
 
@@ -69,6 +70,8 @@ public:
 	~Tdx(void);
 	void SendQuery(td_api::object_ptr<td_api::Function> f,
 		       std::function<void(Tdx *, Object)> handler);
+
+	Object SendQuerySync(td_api::object_ptr<td_api::Function> f);
 
 private:
 	std::unique_ptr<td::ClientManager> client_manager_;

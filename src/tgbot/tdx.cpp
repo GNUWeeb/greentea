@@ -30,6 +30,31 @@ void Tdx::SendQuery(td_api::object_ptr<td_api::Function> f,
 	client_manager_->send(client_id_, query_id, std::move(f));
 }
 
+Object Tdx::SendQuerySync(td_api::object_ptr<td_api::Function> f)
+{
+	volatile bool done = false;
+	Object ret = nullptr;
+	std::mutex mutex;
+	std::unique_lock<std::mutex> lock(mutex);
+	std::condition_variable cond;
+
+	std::function<void(Tdx *, Object)> callback =
+		[&mutex, &ret, &cond, &done](Tdx *, Object obj)
+		{
+			mutex.lock();
+			ret = std::move(obj);
+			done = true;
+			cond.notify_one();
+			mutex.unlock();
+		};
+
+	SendQuery(std::move(f), std::move(callback));
+	while (!done)
+		cond.wait(lock);
+
+	return ret;
+}
+
 void Tdx::ProcessResponse(td::ClientManager::Response res)
 {
 	if (!res.object)
