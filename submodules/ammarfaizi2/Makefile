@@ -14,8 +14,7 @@ obj-cpp-y += \
 	$(SDIR_SUBMODULES__AMMARFAIZI2)/workqueue2/WorkQueue.o
 
 INCLUDE_DIR += \
-	-I$(SDIR_SUBMODULES__AMMARFAIZI2)/cppmysql \
-	-I$(SDIR_SUBMODULES__AMMARFAIZI2)/workqueue2
+	-I$(SDIR_SUBMODULES__AMMARFAIZI2)
 
 LIB_LDFLAGS += \
 	-lmysqlclient
