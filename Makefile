@@ -66,6 +66,9 @@ obj-y :=
 
 all: $(TARGET_BIN)
 
+init:
+	./init.sh;
+
 include submodules/Makefile
 include src/Makefile
 
